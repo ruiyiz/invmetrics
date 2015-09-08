@@ -1,11 +1,16 @@
-%% convert data to different formats
-%
+%% Prepare test data
+% This script converts sample data files into multiple MATLAB data types
+% and save the variables in a MAT file.
 
-%% convert data to different formats
-managersTable = readtable('data/managers.csv', 'Delimiter', ' ', 'TreatAsEmpty', 'NA');
-managersTable.Index = datenum(managersTable{:, 1});
+%% Convert sample data to 
+managers_tbl = readtable('data/managers.csv', 'Delimiter', ' ', ...
+                         'TreatAsEmpty', 'NA');
+managers_tbl.Index = datenum(managers_tbl{:, 1});
+
 %%
-managersMat = table2array(managersTable);
+managers_mat = table2array(managers_tbl);
+
 %%
-fints(managersTable)
-%% save to MAT file
+managers_fts = fints(managers_tbl);
+
+%% Save variables to a MAT file
