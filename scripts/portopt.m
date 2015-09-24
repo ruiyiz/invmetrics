@@ -1,13 +1,12 @@
 load BlueChipStockMoments
 %%
-targetReturns = linspace(0.005, 0.03, 10);
+%targetReturns = linspace(0.005, 0.03, 10);
 %%
-pwgtl = arrayfun(@(x) portoptlagrange(AssetList, AssetMean, AssetCovar, x), ...
-                 targetReturns, ...
-                 'UniformOutput', false);
-%%
-portVar = w' * AssetCovar * w;
-portStd = sqrt(portVar)
+% pwgtl = arrayfun(@(x) portoptlagrange(AssetList, AssetMean, AssetCovar, x), ...
+%                  targetReturns, ...
+%                  'UniformOutput', false);
+
+[w, pstd, pret] = portoptlagrange(AssetMean, AssetCovar, 0.01);
 
 %% Use Portfolio object to estimate weights
 p = Portfolio;
